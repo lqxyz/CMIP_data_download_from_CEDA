@@ -124,7 +124,7 @@ def downloadVarFiles(opener, modelFileUrlDict, outDir):
                 tempName = item[0].split('_')
                 tempName[2] = model
                 temp = '_'.join(x for x in tempName) 
-                with open(outDir+'/'+temp, "wb") as code:
+                with open(os.path.join(outDir,temp), "wb") as code:
                         code.write(data)
 
 if __name__ == '__main__':
@@ -149,11 +149,11 @@ if __name__ == '__main__':
     InstModelsDict = getCMIPInstituteModelsDict(baseURL,cmipType)
     print 'Get files and their URLs dictionary...'
     modelFileUrlDict = getCIMPModelFilesUrlsDict(baseURL, InstModelsDict, experimentType, memberType, varName)
-    f = file(varName+'_'+memberType+'.txt', 'w')
+    f = file(os.path.join(outDir, varName+'_'+memberType+'.txt'), 'w')
     f.write(str(modelFileUrlDict)) 
     f.close()
     print 'Begin download...'
-    outDirectory = outDir + cmipType+'_'+experimentType+'_'+varName+'_'+memberType
+    outDirectory = os.path.join(outDir, cmipType+'_'+experimentType+'_'+varName+'_'+memberType)
     os.system('[[ ! -d '+outDirectory +' ]] && mkdir -p '+outDirectory)
     downloadVarFiles(opener, modelFileUrlDict, outDirectory) 
     print 'Download finished!'
