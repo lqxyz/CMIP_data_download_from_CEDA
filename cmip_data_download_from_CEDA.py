@@ -98,7 +98,7 @@ def getCIMPModelFilesUrlsDict(baseURL, InstModelsDict, experimentType, memberTyp
     for (inst, models) in InstModelsDict.items():
         for model in models:
             if 'cmip5' in model[1]:
-                varURL = model[1]+'/'+experimentType+'/mon/atmos/Amon/'+memberType+'/'+varName+'/latest/'
+                varURL = model[1]+'/'+experimentType+'/mon/atmos/Amon/'+memberType+'/latest/'+varName+'/'
             if 'cmip3' in model[1]:
                 varURL = model[1]+'/'+experimentType+'/mon/atmos/'+varName+'/'+memberType+'/v1/'
             if len(model[0])<6 and 'CCSM' not in model[0]:
