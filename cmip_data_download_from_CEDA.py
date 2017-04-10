@@ -17,7 +17,7 @@ def loginCEDA(username,password):
     Output Value:
         opener: An opener that contains the cookies information to login the website
     '''
-    loginURL = 'https://services.ceda.ac.uk/dj_security/account/signin/'
+    loginURL = 'https://auth.ceda.ac.uk/account/signin/'
     cookieHandler = urllib2.HTTPCookieProcessor()
     opener = urllib2.build_opener( urllib2.HTTPSHandler(), cookieHandler )
     opener.addheaders = [('Referer', loginURL)]
